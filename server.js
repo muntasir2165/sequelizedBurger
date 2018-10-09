@@ -24,8 +24,8 @@ app.set("view engine", "handlebars");
 // Routes (in this case Controller)
 require("./controllers/burgers_controller")(app);
 
-// var syncOptions = { force: false };
-var syncOptions = { force: true };
+var syncOptions = { force: false };
+// var syncOptions = { force: true };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
