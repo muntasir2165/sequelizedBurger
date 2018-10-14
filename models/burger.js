@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
 
   Burger.associate = function(models) {
     // We're saying that a Burger should belong to a Customer
-    // A Burger can't be created without a Customer due to the foreign key constraint
+    // However, in this case a Burger can be created without a Customer due to the foreign key constraint having the property-value pair (allowNull: true)
     Burger.belongsTo(models.Customer, {
       foreignKey: {
         allowNull: true

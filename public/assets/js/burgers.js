@@ -1,14 +1,13 @@
-// // Make sure we wait to attach our handlers until the DOM is fully loaded.
+// Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(document).ready(function() {
   newBurgerToEat();
   devourBurger();
   undoDevourBurger();
   deleteBurger();
-    // show the tooltip when the cursor hovers over the burger devouring / undo
-    // and delete buttons
-    $('[data-toggle="tooltip"]').tooltip();
-    customerEatsBurger();
-  });
+  // show the tooltip when the cursor hovers over the burger devouring / undo and delete buttons
+  $('[data-toggle="tooltip"]').tooltip();
+  customerEatsBurger();
+});
 
 function customerEatsBurger() {
   $(document).on("click", ".customer_devour_burger", function() {
@@ -45,23 +44,23 @@ function addNewBurgerToEatToDb(newBurger) {
       console.log("Created a new burger to eat.");
       // Reload the page to get the updated listing of burgers
       location.reload();
-          },
-          error: function(XMLHttpRequest, textStatus, errorThrown) {
-            alert("Sorry, invalid request.");
-            console.log("textStatus: " + textStatus + " errorThrown: " + errorThrown);
-          }
-        });
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+      alert("Sorry, invalid request.");
+      console.log("textStatus: " + textStatus + " errorThrown: " + errorThrown);
+    }
+  });
 }
 
 function devourBurger() {
   $(document).on("click", ".devour_burger", function() {
     var burgerId = $(this).attr("data-id");
-      updateDevourBurgerToDb(burgerId, null);
-    });
+    updateDevourBurgerToDb(burgerId, null);
+  });
 }
 
 function updateDevourBurgerToDb(burgerId, customerName) {
-  console.log(burgerId, customerName);
+  // console.log(burgerId, customerName);
   $.ajax({
     url: "/burgers/devour/" + burgerId,
     type: "PUT",
@@ -81,8 +80,8 @@ function updateDevourBurgerToDb(burgerId, customerName) {
 function undoDevourBurger() {
   $(document).on("click", ".undo_devour_burger", function() {
     var burgerId = $(this).attr("data-id");
-      updateUndoDevourBurgerToDb(burgerId);
-    });
+    updateUndoDevourBurgerToDb(burgerId);
+  });
 }
 
 function updateUndoDevourBurgerToDb(burgerId) {
